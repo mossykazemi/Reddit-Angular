@@ -1,0 +1,30 @@
+<form class="ui large form segment">
+  <h3 class="ui header">Add a Link</h3>
+
+  <div class="field">
+    <label for="title">Title:</label>
+    <input name="title" id="title" #newtitle />
+    <!-- used # to create template variable and it's of type HTMLInputElement so we can access its properties -->
+    <!-- we can pass them as variables into the addArticle() function on the -->
+  </div>
+
+  <div class="field">
+    <label for="link">Link:</label>
+    <input name="link" id="link" #newlink />
+  </div>
+  <!-- we bind addArticle action to click event and passed local variables as it's arguments -->
+  <button
+    (click)="addArticle(newtitle, newlink)"
+    class="ui positive right floated button"
+  >
+    Submit Link
+  </button>
+</form>
+
+<div class="ui grid posts">
+  <!-- here each article is a variable and we send each article to article-component  with atribute binding  -->
+  <app-article
+    *ngFor="let article of sortedArticles()"
+    [article]="article"
+  ></app-article>
+</div>
